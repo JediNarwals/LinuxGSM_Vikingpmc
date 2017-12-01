@@ -155,6 +155,156 @@ STEAMCMD_TARBALL="steamcmd_linux.tar.gz"
 #
 
 clear
+#!/bin/bash
+
+local commandname="UPDATE"
+local commandaction="Update"
+local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+
+check_ip.sh
+check.sh
+
+# ==> MODIFY THIS
+
+#What user you want to use (default: anonymous)
+STEAM_USER=JediNarwals
+
+#If you are not using anonymous, specify a password here.
+STEAM_PASS=Sn168711
+
+#The default location of the server, relative to this script (default: server).
+#If no directory is specified for the server, it'll fall back on this one.
+#Don't add a trailing /
+INSTALL_DIR=serverfiles
+
+#The location of the SteamCMD, relative to this script (default: bin). Don't add a trailing /
+STEAM_DIR=steamcmd
+
+#Ids of the servers you want to install, leave empty to skip
+#First item is the directory, second item is the AppID. Directory is relative to script directory
+DL_DIR0=
+DL_SV0=233780
+DL_GNM0="Arma 3"
+
+DL_DIR1=
+DL_SV1=
+
+DL_DIR2=
+DL_SV2=
+
+DL_DIR3=
+DL_SV3=
+
+DL_DIR4=
+DL_SV4=
+
+DL_DIR5=
+DL_SV5=
+
+DL_DIR6=
+DL_SV6=
+
+DL_DIR7=
+DL_SV7=
+
+#Ids of the mods you want to install, leave empty to skip
+#First item is the directory, second item is the AppID. Directory is relative to script directory
+#To get the Mod AppID  for the DL_MD# you will need to find the mod on the steamcommunity workshop.
+#In the Web URL you will see a section "/?id=463939057'. This example stims from the Ace mod found here: https://steamcommunity.com/sharedfiles/filedetails/?id=463939057
+DL_NM0="@ace"
+DL_MD0=463939057
+
+DL_NM1="@ace3comptrhsafrf"
+DL_MD1=773131200
+
+DL_NM2="@ace3comptrhsusaf"
+DL_MD2=773125288
+
+DL_NM3="@ace3comptrhsgref"
+DL_MD3=884966711
+
+DL_NM4="@acex"
+DL_MD4=708250744
+
+DL_NM5="@cupterrainscore"
+DL_MD5=583496184
+
+DL_NM6="@cupterrainsmaps"
+DL_MD6=583544987
+
+DL_NM7="@rhsafrf"
+DL_MD7=843425103
+
+DL_NM8="@rhsusaf"
+DL_MD8=843577117
+
+DL_NM9="@rhsgref"
+DL_MD9=843593391
+
+DL_NM10="@smarhscompt"
+DL_MD10=1112431110
+
+DL_NM11="@sma"
+DL_MD11=699630614
+
+DL_NM12="@vsmaio"
+DL_MD12=823636749
+
+DL_NM13="@acre2"
+DL_MD13=751965892
+
+DL_NM14="@task_force_radio"
+DL_MD14=620019431
+
+DL_NM15="@projectopfor"
+DL_MD15=735566597
+
+DL_NM16="@aresmodachilles"
+DL_MD16=723217262
+
+DL_NM17="@mcc"
+DL_MD17=338988835
+
+DL_NM18="@shacktacui"
+DL_MD18=498740884
+
+DL_NM19="@enhancedmovement"
+DL_MD19=333310405
+
+DL_NM20="@advancedtowing"
+DL_MD20=639837898
+
+DL_NM21="@backpackonchest"
+DL_MD21=820924072
+
+DL_NM22="@chernaruswinter"
+DL_MD22=718590354
+
+DL_NM23="@gosalrayak"
+DL_MD23=648172507
+
+DL_NM24="@gosnziwasogo"
+DL_MD24=694603075
+
+DL_NM25="@cba_a3"
+DL_MD25=450814997
+
+DL_NM26="@kunduz"
+DL_MD26=421620913
+
+#Repeat this and the call to add_game at the bottom of this
+#script to add more servers
+
+# ==> (optional) INTERNAL SETTINGS, MODIFY IF REQUIRED
+
+STEAMCMD_URL="http://media.steampowered.com/client/steamcmd_linux.tar.gz"
+STEAMCMD_TARBALL="steamcmd_linux.tar.gz"
+
+#
+#	Don't modify below here, unless you know what you're doing.
+#
+
+clear
 echo "================================="
 echo ""
 echo "updateserver.sh"
